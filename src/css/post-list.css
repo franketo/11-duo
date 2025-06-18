@@ -42,12 +42,14 @@
 .post-list__title {
   font-size: var(--text-2xl);
   margin-top: 0.5rem;
+ 
 }
 
+
 .post-list__title a {
-  font-weight: normal;
-  text-decoration: none;
-  color: rgb(41, 41, 41);
+    font-weight: normal;
+    text-decoration: none;
+    color: rgb(41, 41, 41);
 }
 
 .post-list__title a:hover {
@@ -85,16 +87,28 @@
 }
 
 .post-list__excerpt {
-  margin-top: 1rem;
-  color: rgba(0, 0, 0, 0.8);
+   
+    margin-top: 1rem;
+    color: rgba(0, 0, 0, 0.8); 
+    
+}
+@-webkit-keyframes colours {
+	0% {color: #39f;}
+	15% {color: #8bc5d1;}
+	30% {color: #f8cb4a;}
+	45% {color: #95b850;}
+	60% {color: #944893;}
+	75% {color: #c71f00;}
+	90% {color: #bdb280;}
+	100% {color: #39f;}
 }
 
 .post-list__read-more {
-  width: fit-content;
-  font-size: 1rem;
-  text-transform: capitalize;
-  margin-top: 1rem;
-  text-decoration: underline;
+    width: fit-content;
+    font-size: 1rem;
+    text-transform: capitalize;
+    margin-top: 1rem;
+    text-decoration: underline;
 }
 
 .post-list__read-more:hover {

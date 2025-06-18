@@ -21,6 +21,7 @@ pre[class*="language-"] {
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
+  border-radius: 0.5rem; /*dodal border radius */
 }
 
 pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
@@ -43,14 +44,18 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 }
 /* Code blocks */
 pre[class*="language-"] {
-  padding: 1em;
-  margin: .5em 0;
-  overflow: auto;
+    /*  padding: 2em; */
+
+    /* top | left and right | bottom */
+    padding: 2em 1em 1em;
+
+    margin: .5em 0;
+    overflow: auto;
 }
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background: #282c34;
+    background: #Fafafa;
 }
 
 /* Inline code */

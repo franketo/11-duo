@@ -14,8 +14,22 @@ layout: base.njk
     </div>
   </header>
 
+
+
   <main class="post__content">
-    {{ content | safe }}
+      {# START, divs around Prism `pre``code` stuff #}
+      {% set Content = content %}
+      {% set withoutDivStart = '<pre class="language-' %}
+      {% set withDivStart = '<div class="highlight"><pre class="language-' %}
+      {% set withoutDivEnd = '</code></pre>' %}
+      {% set withDivEnd = '</code></pre></div>' %}
+      {% if withoutDivStart in content %}
+	      {% set Content = content | replace (withoutDivStart, withDivStart) %}
+	      {% set Content = Content | replace (withoutDivEnd, withDivEnd) %}
+      {% endif %}
+      {#   END, divs around Prism `pre``code` stuff #}
+      {{ Content | safe }}
+      <!-- {{ content | safe }}e -->
   </main>
 
   <aside class="post__aside">

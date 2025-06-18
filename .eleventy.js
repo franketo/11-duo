@@ -19,7 +19,8 @@ const manifest = isDev
   ? {
       'main.js': '/assets/main.js',
       'main.css': '/assets/main.css',
-    }
+      'copy_button_code.js': '/assets/copy_button_code.js',
+  }
   : JSON.parse(fs.readFileSync(manifestPath, { encoding: 'utf8' }));
 
 module.exports = function (eleventyConfig) {
@@ -37,8 +38,9 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.setDataDeepMerge(true);
-  eleventyConfig.addPassthroughCopy({ 'src/images': 'images' });
-  eleventyConfig.setBrowserSyncConfig({ files: [manifestPath] });
+    eleventyConfig.addPassthroughCopy({ 'src/images': 'images' });
+    eleventyConfig.addPassthroughCopy({ 'src/js': 'assets' });
+    eleventyConfig.setBrowserSyncConfig({ files: [manifestPath] });
 
   eleventyConfig.addShortcode('bundledcss', function () {
     return manifest['main.css']
@@ -52,7 +54,13 @@ module.exports = function (eleventyConfig) {
       : '';
   });
 
-  eleventyConfig.addFilter('excerpt', (post) => {
+    eleventyConfig.addShortcode('copybtn', function () {
+        return manifest['copy_button_code.js']
+            ? `<script src="${manifest['copy_button_code.js']}"></script>`
+            : '';
+    });
+
+    eleventyConfig.addFilter('excerpt', (post) => {
     const content = post.replace(/(<([^>]+)>)/gi, '');
     return content.substr(0, content.lastIndexOf(' ', 200)) + '...';
   });
@@ -131,3 +139,4 @@ module.exports = function (eleventyConfig) {
     markdownTemplateEngine: 'njk',
   };
 };
+  
