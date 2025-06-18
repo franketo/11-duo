@@ -8,52 +8,56 @@ const isDev = process.env.ELEVENTY_ENV === 'development';
 const baseFilename = isDev ? 'main' : 'main.[contenthash]';
 
 module.exports = {
-  entry: [
-    path.resolve(__dirname, 'src', 'js', 'main.js'),
-    path.resolve(__dirname, 'src', 'css', 'main.css'),
-  ],
-  output: {
-    path: path.resolve(__dirname, 'public', 'assets'),
-    filename: `${baseFilename}.js`,
-  },
+    context: path.resolve(__dirname, 'src', 'js'),
+    entry: {
+        'main': [
+            path.resolve(__dirname, 'src', 'js', 'copy_button_code.js'),
+            path.resolve(__dirname, 'src', 'js', 'main.js'),
+        ]
+    },
 
-  optimization: {
-    minimize: !isDev,
-    minimizer: [new TerserPlugin({ parallel: true })],
-  },
+    output: {
+        path: path.resolve(__dirname, 'public', 'assets'),
+        filename: `${baseFilename}.js`,
+    },
 
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env'],
+    optimization: {
+        minimize: !isDev,
+        minimizer: [new TerserPlugin({ parallel: true })],
+    },
+
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: ['@babel/preset-env'],
+                        },
+                    },
+                ],
             },
-          },
-        ],
-      },
-      {
-        test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
+            {
+                test: /\.css$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 1,
+                        },
+                    },
+                    'postcss-loader',
+                ],
             },
-          },
-          'postcss-loader',
         ],
-      },
+    },
+
+    plugins: [
+        new WebpackManifestPlugin({ publicPath: '/assets/' }),
+        new MiniCssExtractPlugin({ filename: `${baseFilename}.css` }),
     ],
-  },
-
-  plugins: [
-    new WebpackManifestPlugin({ publicPath: '/assets/' }),
-    new MiniCssExtractPlugin({ filename: `${baseFilename}.css` }),
-  ],
 };
