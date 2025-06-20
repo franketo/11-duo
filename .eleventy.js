@@ -51,6 +51,16 @@ module.exports = function (eleventyConfig) {
             ? `<script src="${manifest['main.js']}"></script>`
             : '';
     });
+    
+    	// shortcode for adding margin notes
+	eleventyConfig.addShortcode('marginnote', 
+		(id, content) => 
+			`<label for="${id}" class="margin-toggle">&#8853;</label>
+			<input type="checkbox" id="${id}" class="margin-toggle"/>
+			<span class="marginnote">${content}</span>`
+		
+	);
+
 
     eleventyConfig.addFilter('excerpt', (post) => {
         const content = post.replace(/(<([^>]+)>)/gi, '');

@@ -12,7 +12,7 @@ module.exports = {
     entry: {
         'main': [
             path.resolve(__dirname, 'src', 'js', 'copy_button_code.js'),
-            path.resolve(__dirname, 'src', 'js', 'main.js'),
+            path.resolve(__dirname, 'src', 'css', 'main.css'),
         ]
     },
 

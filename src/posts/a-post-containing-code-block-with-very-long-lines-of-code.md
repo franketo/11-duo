@@ -22,6 +22,22 @@ toFixed(25.198726354, 5); // 25.19872
 toFixed(25.198726354, 6); // 25.198726
 ```
 
+cause I can't leave a challenge alone, I added basic margin notes to this blog. The approach is basically from [Tufte-CSS](https://github.com/edwardtufte/tufte-css), and I now have both (unnumbered) margin notes{% marginnote "defs", "Following Tufte, I'll use *margin note* for unnumbered marginalia, and *side note* for numbered ones." %} and standard footnotes. Here's an [example page](/pages/extra/story-of-kritakrita) to show it off.
+
+And here's a sneak preview of how to add a margin note:{% marginnote "tip", "It took me a bit to find out [how to escape the shortcode in this code snippet](https://markllobrera.com/posts/eleventy-escaping-nunjucks-statements-in-markdown-code-blocks/)." %}
+```javascript
+{% raw %}
+Here is some text{% marginnote "demo", "This is a note." %} to annotate.
+{% endraw %}
+```
+Which produces:
+
+> Here is some text{% marginnote "demo", "This is a note." %} to annotate.
+
+~~Although, as you can see, I don't have it working quite right with notes in blockquotes. Later....~~ [Fixed it.]
+
+### Deciding on the Approach
+
 ## Heading
 
 Staff engagement highlights yet are we in agreeance, nor time vampire yet programmatically. Imagineer proceduralize. Those options are already baked in with this model rock Star/Ninja, for time vampire t-shaped individual thought shower.

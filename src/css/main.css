@@ -7,7 +7,9 @@
 @import 'header.css';
 @import 'footer.css';
 @import 'post.css';
-@import 'about.css';
+@import 'marginnote.css';
+
+
 
 .layout-wrapper {
   display: grid;
@@ -22,7 +24,7 @@
   padding-left: 1rem;
   padding-right: 1rem;
   min-width: 0;
-  max-width: 48.75rem;
+  max-width: 60rem;
   margin-left: auto;
   margin-right: auto;
 }
